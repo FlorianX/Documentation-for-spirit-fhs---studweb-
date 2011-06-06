@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for geo.phtml</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file geo.phtml</h1>
+<p>Documentation is available at <a href="../Default/viewScripts/_application---modules---default---views---scripts---html5---geo.phtml.html">geo.phtml</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;is&nbsp;the&nbsp;geo&nbsp;view</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Florian&nbsp;Schuhmann</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Default</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;viewScripts</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-php">?&gt;</span></div></li>
+<li><div class="src-line"><a name="a10"></a>&lt;div&nbsp;id=&quot;map_canvas&quot;&nbsp;style=&quot;width:&nbsp;100%;&nbsp;height:&nbsp;300px;margin-bottom:10px;&quot;&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a11"></a>&lt;div&nbsp;id=&quot;msg&quot;&nbsp;style=&quot;margin-top:10px;&quot;&gt;&lt;/div&gt;</div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a14"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;</div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;src=&quot;http://maps.google.com/maps/api/js?sensor=true&quot;&gt;&lt;/script&gt;</div></li>
+<li><div class="src-line"><a name="a16"></a>&lt;script&nbsp;type=&quot;text/javascript&quot;&gt;</div></li>
+<li><div class="src-line"><a name="a17"></a>//&nbsp;checks&nbsp;if&nbsp;the&nbsp;geolocation&nbsp;api&nbsp;is&nbsp;available</div></li>
+<li><div class="src-line"><a name="a18"></a>if(typeof&nbsp;navigator.geolocation&nbsp;!==&nbsp;'undefined'){</div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;//initialize&nbsp;some&nbsp;variable</div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;map;</div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;infowindow&nbsp;=&nbsp;new&nbsp;google.maps.InfoWindow();</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;geocoder;</div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;-&nbsp;initialize&nbsp;the&nbsp;google&nbsp;maps&nbsp;api&nbsp;with&nbsp;jQuery&nbsp;dom.ready</div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;-&nbsp;initailize&nbsp;the&nbsp;map&nbsp;with&nbsp;the&nbsp;FHS&nbsp;buildung&nbsp;as</div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;default&nbsp;location</div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;$(document).ready(function(){</div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;initialize&nbsp;the&nbsp;gecoder&nbsp;to&nbsp;get&nbsp;later&nbsp;the&nbsp;address&nbsp;of&nbsp;the&nbsp;useres&nbsp;location</div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geocoder&nbsp;=&nbsp;new&nbsp;google.maps.Geocoder();</div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;the&nbsp;default/&nbsp;starting&nbsp;point&nbsp;of&nbsp;the&nbsp;map</div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;latlng&nbsp;=&nbsp;new&nbsp;google.maps.LatLng(50.715313,&nbsp;10.467457);</div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;some&nbsp;special&nbsp;options&nbsp;for&nbsp;the&nbsp;map</div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;myOptions&nbsp;=&nbsp;{</div></li>
+<li><div class="src-line"><a name="a36"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zoom:&nbsp;18,</div></li>
+<li><div class="src-line"><a name="a37"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;center:&nbsp;latlng,</div></li>
+<li><div class="src-line"><a name="a38"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mapTypeId:&nbsp;google.maps.MapTypeId.SATELLITE</div></li>
+<li><div class="src-line"><a name="a39"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</div></li>
+<li><div class="src-line"><a name="a40"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;creating&nbsp;the&nbsp;map</div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map&nbsp;=&nbsp;new&nbsp;google.maps.Map(document.getElementById(&quot;map_canvas&quot;),&nbsp;myOptions);</div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//adding&nbsp;the&nbsp;button&nbsp;to&nbsp;search&nbsp;for&nbsp;the&nbsp;location</div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#map_canvas').after('&lt;form&nbsp;style=&quot;text-align:center&quot;&gt;&lt;input&nbsp;type=&quot;button&quot;&nbsp;id=&quot;searchButton&quot;&nbsp;value=&quot;Zeig&nbsp;mir&nbsp;wo&nbsp;ich&nbsp;bin!&quot;&nbsp;onclick=&quot;findMe();&quot;&gt;&lt;/form&gt;');</div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;/*</div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;called&nbsp;when&nbsp;somebody&nbsp;clicks&nbsp;on&nbsp;the&nbsp;button</div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a53"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</div></li>
+<li><div class="src-line"><a name="a54"></a>&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;findMe(){</div></li>
+<li><div class="src-line"><a name="a55"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;defining&nbsp;the&nbsp;success&nbsp;callback&nbsp;function</div></li>
+<li><div class="src-line"><a name="a56"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;successCallback&nbsp;=&nbsp;function(position){</div></li>
+<li><div class="src-line"><a name="a57"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;get&nbsp;the&nbsp;latitude&nbsp;and&nbsp;longitude&nbsp;from&nbsp;the&nbsp;geolocation&nbsp;api</div></li>
+<li><div class="src-line"><a name="a58"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;myLatitude&nbsp;=&nbsp;position.coords.latitude;</div></li>
+<li><div class="src-line"><a name="a59"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;myLongitude&nbsp;=&nbsp;position.coords.longitude;</div></li>
+<li><div class="src-line"><a name="a60"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a61"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;creating&nbsp;a&nbsp;new&nbsp;point&nbsp;with&nbsp;the&nbsp;location&nbsp;data&nbsp;</div></li>
+<li><div class="src-line"><a name="a62"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;of&nbsp;the&nbsp;user&nbsp;and&nbsp;set&nbsp;it&nbsp;to&nbsp;the&nbsp;map</div></li>
+<li><div class="src-line"><a name="a63"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</div></li>
+<li><div class="src-line"><a name="a64"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;newPoint&nbsp;=&nbsp;new&nbsp;google.maps.LatLng(myLatitude,&nbsp;myLongitude)</div></li>
+<li><div class="src-line"><a name="a65"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.setCenter(newPoint,15);</div></li>
+<li><div class="src-line"><a name="a66"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a67"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Needed&nbsp;to&nbsp;add&nbsp;the&nbsp;address&nbsp;in&nbsp;an&nbsp;infoWindow</div></li>
+<li><div class="src-line"><a name="a68"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(geocoder)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a69"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;geocoder.geocode({'latLng':&nbsp;newPoint},&nbsp;function(results,&nbsp;status)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a70"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(status&nbsp;==&nbsp;google.maps.GeocoderStatus.OK)&nbsp;{</div></li>
+<li><div class="src-line"><a name="a71"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(results[1])&nbsp;{</div></li>
+<li><div class="src-line"><a name="a72"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.setZoom(15);</div></li>
+<li><div class="src-line"><a name="a73"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;creating&nbsp;a&nbsp;marker&nbsp;for&nbsp;the&nbsp;location</div></li>
+<li><div class="src-line"><a name="a74"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;marker&nbsp;=&nbsp;new&nbsp;google.maps.Marker({</div></li>
+<li><div class="src-line"><a name="a75"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;newPoint,&nbsp;</div></li>
+<li><div class="src-line"><a name="a76"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map:&nbsp;map</div></li>
+<li><div class="src-line"><a name="a77"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a78"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a79"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;insert&nbsp;the&nbsp;address&nbsp;data</div></li>
+<li><div class="src-line"><a name="a80"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infowindow.setContent(results[0].formatted_address);</div></li>
+<li><div class="src-line"><a name="a81"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;infowindow.open(map,&nbsp;marker);</div></li>
+<li><div class="src-line"><a name="a82"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a83"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{</div></li>
+<li><div class="src-line"><a name="a84"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert(&quot;Geocoder&nbsp;failed&nbsp;due&nbsp;to:&nbsp;&quot;&nbsp;+&nbsp;status);</div></li>
+<li><div class="src-line"><a name="a85"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a86"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});</div></li>
+<li><div class="src-line"><a name="a87"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a88"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a89"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;show&nbsp;all&nbsp;informations&nbsp;that&nbsp;have&nbsp;been&nbsp;collected&nbsp;by&nbsp;the&nbsp;browser</div></li>
+<li><div class="src-line"><a name="a90"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;msg&nbsp;=&nbsp;'Hier&nbsp;sind&nbsp;alle&nbsp;Informationen&nbsp;die&nbsp;jetzt&nbsp;aus&nbsp;deinem&nbsp;Browser&nbsp;ausgelesen&nbsp;wurden:&lt;hr&gt;'&nbsp;+&nbsp;</div></li>
+<li><div class="src-line"><a name="a91"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Zeit:&nbsp;'&nbsp;+&nbsp;position.timestamp&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a92"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Geographische&nbsp;Breite:&nbsp;'&nbsp;+&nbsp;position.coords.latitude&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a93"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Geographische&nbsp;Länge:&nbsp;'&nbsp;+&nbsp;position.coords.longitude&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a94"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Höhe:&nbsp;'&nbsp;+&nbsp;position.coords.altitude&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a95"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Präzision:&nbsp;'&nbsp;+&nbsp;position.coords.accuracy&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a96"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Präzision&nbsp;der&nbsp;Höhenmessung:&nbsp;'&nbsp;+&nbsp;position.coords.altitudeAccuracy&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a97"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Richtung:&nbsp;'&nbsp;+&nbsp;position.coords.heading&nbsp;+&nbsp;'&lt;br&gt;'&nbsp;+</div></li>
+<li><div class="src-line"><a name="a98"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'Geschwindigkeit:&nbsp;'&nbsp;+&nbsp;position.coords.speed&nbsp;+&nbsp;'&lt;br&gt;';</div></li>
+<li><div class="src-line"><a name="a99"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a100"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$('#msg').html(msg);</div></li>
+<li><div class="src-line"><a name="a101"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</div></li>
+<li><div class="src-line"><a name="a102"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;defining&nbsp;the&nbsp;error&nbsp;callback</div></li>
+<li><div class="src-line"><a name="a103"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;errorCallback&nbsp;=&nbsp;function&nbsp;(error){</div></li>
+<li><div class="src-line"><a name="a104"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch(error.code)&nbsp;</div></li>
+<li><div class="src-line"><a name="a105"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</div></li>
+<li><div class="src-line"><a name="a106"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;error.TIMEOUT:</div></li>
+<li><div class="src-line"><a name="a107"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert&nbsp;('Timeout');</div></li>
+<li><div class="src-line"><a name="a108"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</div></li>
+<li><div class="src-line"><a name="a109"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;error.POSITION_UNAVAILABLE:</div></li>
+<li><div class="src-line"><a name="a110"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert&nbsp;('Position&nbsp;unavailable');</div></li>
+<li><div class="src-line"><a name="a111"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</div></li>
+<li><div class="src-line"><a name="a112"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;error.PERMISSION_DENIED:</div></li>
+<li><div class="src-line"><a name="a113"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert&nbsp;('Permission&nbsp;denied');</div></li>
+<li><div class="src-line"><a name="a114"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</div></li>
+<li><div class="src-line"><a name="a115"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;error.UNKNOWN_ERROR:</div></li>
+<li><div class="src-line"><a name="a116"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alert&nbsp;('Unknown&nbsp;error');</div></li>
+<li><div class="src-line"><a name="a117"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;</div></li>
+<li><div class="src-line"><a name="a118"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a119"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</div></li>
+<li><div class="src-line"><a name="a120"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;defining&nbsp;some&nbsp;options&nbsp;for&nbsp;the&nbsp;geo&nbsp;api</div></li>
+<li><div class="src-line"><a name="a121"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var&nbsp;options&nbsp;=&nbsp;{</div></li>
+<li><div class="src-line"><a name="a122"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enableHighAccuracy:&nbsp;true,&nbsp;//&nbsp;Super-Präzisions-Modus</div></li>
+<li><div class="src-line"><a name="a123"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;timeout:&nbsp;2000,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Maximale&nbsp;Wartezeit</div></li>
+<li><div class="src-line"><a name="a124"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maximumAge:&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Maximales&nbsp;akzeptiertes&nbsp;Cache-Alter</div></li>
+<li><div class="src-line"><a name="a125"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;};</div></li>
+<li><div class="src-line"><a name="a126"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a127"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;call&nbsp;the&nbsp;geolocation&nbsp;api</div></li>
+<li><div class="src-line"><a name="a128"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;navigator.geolocation.getCurrentPosition(successCallback,&nbsp;errorCallback,&nbsp;options);</div></li>
+<li><div class="src-line"><a name="a129"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/*&nbsp;How&nbsp;does&nbsp;firefox&nbsp;(or&nbsp;an&nbsp;other&nbsp;browser)&nbsp;knows&nbsp;where&nbsp;you&nbsp;are?</div></li>
+<li><div class="src-line"><a name="a130"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Its&nbsp;called&nbsp;&quot;Google&nbsp;Location&nbsp;Services&quot;.</div></li>
+<li><div class="src-line"><a name="a131"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;More&nbsp;information&nbsp;here:</div></li>
+<li><div class="src-line"><a name="a132"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;http://www.mozilla.com/en/firefox/geolocation/</div></li>
+<li><div class="src-line"><a name="a133"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**/</div></li>
+<li><div class="src-line"><a name="a134"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a135"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a136"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a137"></a>&nbsp;&nbsp;&nbsp;&nbsp;}</div></li>
+<li><div class="src-line"><a name="a138"></a>}else{</div></li>
+<li><div class="src-line"><a name="a139"></a>&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;is&nbsp;shown&nbsp;if&nbsp;the&nbsp;browser&nbsp;doesn't&nbsp;support&nbsp;the&nbsp;geolocation&nbsp;api</div></li>
+<li><div class="src-line"><a name="a140"></a>&nbsp;&nbsp;&nbsp;&nbsp;$('#map_canvas').html('&lt;h3&gt;Sorry,&nbsp;aber&nbsp;dein&nbsp;Browser&nbsp;unterstützt&nbsp;die&nbsp;Geolocation&nbsp;API&nbsp;von&nbsp;HTML5&nbsp;nicht!&lt;/h3&gt;');</div></li>
+<li><div class="src-line"><a name="a141"></a>}</div></li>
+<li><div class="src-line"><a name="a142"></a>&lt;/script&gt;</div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 06 Jun 2011 18:33:48 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+	</p>
+	</body>
+</html>

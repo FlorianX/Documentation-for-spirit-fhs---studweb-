@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class EntryController</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class EntryController</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This ist the Controller for reading news and writing comments.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Florian Schuhmann</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_application---modules---default---controllers---EntryController.php.html">/application/modules/default/controllers/EntryController.php</a> (line <span class="field"><a href="../../__filesource/fsource_Default_Controllers_applicationmodulesdefaultcontrollersEntryController.php.html#a9">9</a></span>)
+		</p>
+		
+				
+		<pre>Zend_Controller_Action
+   |
+   --EntryController</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																				
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#deleteAction" title="details" class="method-name">deleteAction</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#indexAction" title="details" class="method-name">indexAction</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processAction" title="details" class="method-name">processAction</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#showAction" title="details" class="method-name">showAction</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methoddeleteAction" id="deleteAction"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">deleteAction</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Controllers_applicationmodulesdefaultcontrollersEntryController.php.html#a122">122</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Here we delete comments.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> <a href="../../Default/Model/Default_Model_Comment.html">Default_Model_Comment</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			deleteAction
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodindexAction" id="indexAction"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">indexAction</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Controllers_applicationmodulesdefaultcontrollersEntryController.php.html#a16">16</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Shows a list of news. These can be filtered by owner or class.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> <a href="../../Default/Model/Default_Model_Entry.html">Default_Model_Entry</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			indexAction
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodprocessAction" id="processAction"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">processAction</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Controllers_applicationmodulesdefaultcontrollersEntryController.php.html#a80">80</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This function validates and processes the submited comment form.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> Zend_Auth</li>
+				<li><span class="field">uses:</span> <a href="../../Default/Model/Default_Model_Comment.html">Default_Model_Comment</a></li>
+				<li><span class="field">uses:</span> <a href="../../Default/Forms/Default_Form_Comment.html">Default_Form_Comment</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processAction
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodshowAction" id="showAction"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">showAction</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Controllers_applicationmodulesdefaultcontrollersEntryController.php.html#a41">41</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Shows a single news and their comments.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> Zend_Auth</li>
+				<li><span class="field">uses:</span> <a href="../../Default/Model/Default_Model_Entry.html">Default_Model_Entry</a></li>
+				<li><span class="field">uses:</span> <a href="../../Default/Forms/Default_Form_Comment.html">Default_Form_Comment</a></li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			showAction
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 06 Jun 2011 18:33:47 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+	</p>
+	</div></body>
+</html>

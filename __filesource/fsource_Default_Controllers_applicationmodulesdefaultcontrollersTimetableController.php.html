@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for TimetableController.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file TimetableController.php</h1>
+<p>Documentation is available at <a href="../Default/Controllers/_application---modules---default---controllers---TimetableController.php.html">TimetableController.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;This&nbsp;controller&nbsp;is&nbsp;responsible&nbsp;for&nbsp;the&nbsp;timetable&nbsp;or&nbsp;the&nbsp;event&nbsp;planning.</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Florian&nbsp;Schuhmann</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Default</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;Controllers</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-key">class&nbsp;</span><a href="../Default/Controllers/TimetableController.html">TimetableController</a>&nbsp;<span class="src-key">extends&nbsp;</span><span class="src-id">Zend_Controller_Action</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a11"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Default/Controllers/TimetableController.html#methodinit">init</a><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a12"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;Load&nbsp;timetable&nbsp;navigaton&nbsp;depending&nbsp;on</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;the&nbsp;today's&nbsp;date&nbsp;and&nbsp;the&nbsp;semester&nbsp;start/end&nbsp;dates</span></div></li>
+<li><div class="src-line"><a name="a14"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$xmlTag&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">_helper</span><span class="src-sym">-&gt;</span><span class="src-id">ActualSemester</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a15"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$subconfig&nbsp;</span>=&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">Zend_Config_Xml</span><span class="src-sym">(</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-id"><a href="../Default/_public---index.php.html#defineAPPLICATION_PATH">APPLICATION_PATH</a>&nbsp;</span>.&nbsp;<span class="src-str">'/configs/timetables.xml'</span><span class="src-sym">,&nbsp;</span><span class="src-var">$xmlTag</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;setPages&nbsp;-&gt;&nbsp;replaces&nbsp;the&nbsp;subpages&nbsp;if&nbsp;they&nbsp;exists</span></div></li>
+<li><div class="src-line"><a name="a18"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;addPages&nbsp;-&gt;&nbsp;adds&nbsp;only&nbsp;the&nbsp;sides&nbsp;this&nbsp;results&nbsp;in&nbsp;this&nbsp;scenario&nbsp;in&nbsp;dublication</span></div></li>
+<li><div class="src-line"><a name="a19"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$nav&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">view</span><span class="src-sym">-&gt;</span><span class="src-id">navigation</span><span class="src-sym">(</span><span class="src-id">Zend_Registry</span><span class="src-sym">::</span><span class="src-id">get</span><span class="src-sym">(</span><span class="src-str">'mainMenu'</span><span class="src-sym">))</span><span class="src-sym">-&gt;</span><span class="src-id">findOneBy</span><span class="src-sym">(</span><span class="src-str">'label'</span><span class="src-sym">,</span><span class="src-str">'Stundenplan'</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">setPages</span><span class="src-sym">(</span><span class="src-var">$subconfig</span><span class="src-sym">-&gt;</span><span class="src-id">toArray</span><span class="src-sym">(</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a20"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;</div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a23"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;this&nbsp;action&nbsp;will&nbsp;show&nbsp;the&nbsp;calendar/&nbsp;timetable</span></div></li>
+<li><div class="src-line"><a name="a24"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Default/Controllers/TimetableController.html#methodindexAction">indexAction</a>&nbsp;<span class="src-sym">(</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$course&nbsp;</span>=&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_getParam</span><span class="src-sym">(</span><span class="src-str">'course'</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$course&nbsp;</span>!=&nbsp;<span class="src-id">NULL</span><span class="src-sym">)&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a29"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">view</span><span class="src-sym">-&gt;</span><span class="src-id">course&nbsp;</span>=&nbsp;<span class="src-var">$course</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a30"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span><span class="src-key">else</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a31"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-var">view</span><span class="src-sym">-&gt;</span><span class="src-id">message&nbsp;</span>=<span class="src-str">'Please&nbsp;choose&nbsp;a&nbsp;course!'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a35"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;With&nbsp;this&nbsp;procedure&nbsp;we&nbsp;can&nbsp;use&nbsp;url's&nbsp;like&nbsp;this:&nbsp;&quot;spirit/timetable/bawi2&quot;</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;But&nbsp;this&nbsp;way&nbsp;every&nbsp;class&nbsp;has&nbsp;to&nbsp;be&nbsp;an&nbsp;action.</span></div></li>
+<li><div class="src-line"><a name="a37"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Here&nbsp;helps&nbsp;us&nbsp;the&nbsp;__call&nbsp;function,&nbsp;which&nbsp;is&nbsp;called&nbsp;if&nbsp;no&nbsp;action&nbsp;were&nbsp;found.</span></div></li>
+<li><div class="src-line"><a name="a38"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a39"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@see</span><span class="src-doc">&nbsp;Zend_Controller_Action::__call()</span></div></li>
+<li><div class="src-line"><a name="a40"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a41"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Default/Controllers/TimetableController.html#method__call">__call</a><span class="src-sym">(</span><span class="src-var">$method</span><span class="src-sym">,&nbsp;</span><span class="src-var">$args</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a42"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a43"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-str">'Action'&nbsp;</span>==&nbsp;<a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$method</span><span class="src-sym">,&nbsp;</span>-<span class="src-num">6</span><span class="src-sym">))&nbsp;</span><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a44"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;If&nbsp;the&nbsp;action&nbsp;method&nbsp;was&nbsp;not&nbsp;found,&nbsp;forward&nbsp;to&nbsp;the</span></div></li>
+<li><div class="src-line"><a name="a45"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;index&nbsp;action&nbsp;with&nbsp;the&nbsp;class&nbsp;as&nbsp;param</span></div></li>
+<li><div class="src-line"><a name="a46"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$course&nbsp;</span>=&nbsp;<a href="http://www.php.net/substr">substr</a><span class="src-sym">(</span><span class="src-var">$method</span><span class="src-sym">,&nbsp;</span><span class="src-num">0</span><span class="src-sym">,</span>-<span class="src-num">6</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a47"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-var">$this</span><span class="src-sym">-&gt;</span><span class="src-id">_forward</span><span class="src-sym">(</span><span class="src-str">'index'</span><span class="src-sym">,</span><span class="src-id">null</span><span class="src-sym">,</span><span class="src-id">null</span><span class="src-sym">,</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'course'</span>=&gt;<span class="src-var">$course</span><span class="src-sym">))</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a48"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a49"></a>&nbsp;</div></li>
+<li><div class="src-line"><a name="a50"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-comm">//&nbsp;all&nbsp;other&nbsp;methods&nbsp;throw&nbsp;an&nbsp;exception</span></div></li>
+<li><div class="src-line"><a name="a51"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;<span class="src-key">new&nbsp;</span><span class="src-id">Exception</span><span class="src-sym">(</span><span class="src-str">'Invalid&nbsp;method&nbsp;&quot;'&nbsp;</span>.&nbsp;<span class="src-var">$method&nbsp;</span>.&nbsp;<span class="src-str">'&quot;&nbsp;called'</span><span class="src-sym">,</span><span class="src-num">500</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a52"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a53"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 06 Jun 2011 18:33:51 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+	</p>
+	</body>
+</html>

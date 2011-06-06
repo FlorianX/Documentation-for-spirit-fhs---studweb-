@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>File Source for DeleteCommentLink.php</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+						<h1>Source for file DeleteCommentLink.php</h1>
+<p>Documentation is available at <a href="../Default/viewHelper/_application---modules---default---views---helpers---DeleteCommentLink.php.html">DeleteCommentLink.php</a></p>
+<div class="src-code">
+<div class="src-code"><ol><li><div class="src-line"><a name="a1"></a><span class="src-php">&lt;?php</span></div></li>
+<li><div class="src-line"><a name="a2"></a><span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a3"></a><span class="src-doc">&nbsp;*&nbsp;deleteCommentLink&nbsp;helper</span></div></li>
+<li><div class="src-line"><a name="a4"></a><span class="src-doc">&nbsp;*&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a5"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@author</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Florian&nbsp;Schuhmann</span></div></li>
+<li><div class="src-line"><a name="a6"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@package</span><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;Default</span></div></li>
+<li><div class="src-line"><a name="a7"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@subpackage</span><span class="src-doc">&nbsp;viewHelper</span></div></li>
+<li><div class="src-line"><a name="a8"></a><span class="src-doc">&nbsp;*&nbsp;</span><span class="src-doc-coretag">@uses</span><span class="src-doc">&nbsp;viewHelper&nbsp;Zend_View_Helper</span></div></li>
+<li><div class="src-line"><a name="a9"></a><span class="src-doc">&nbsp;*&nbsp;&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a10"></a><span class="src-doc">&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a11"></a><span class="src-key">class&nbsp;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html">Zend_View_Helper_DeleteCommentLink</a></div></li>
+<li><div class="src-line"><a name="a12"></a><span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a13"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a14"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@var&nbsp;</span><span class="src-doc-type">Zend_View_Interface&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a15"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a16"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#var$view">$view</a><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a17"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a18"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">string&nbsp;</span><span class="src-doc-var">$cruser&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a19"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">int&nbsp;</span><span class="src-doc-var">$commentId&nbsp;</span></div></li>
+<li><div class="src-line"><a name="a20"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a21"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#methoddeleteCommentLink">deleteCommentLink</a>&nbsp;<span class="src-sym">(</span><span class="src-var">$cruser</span><span class="src-sym">,</span><span class="src-var">$commentId</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a22"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a23"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$auth&nbsp;</span>=&nbsp;<span class="src-id">Zend_Auth</span><span class="src-sym">::</span><span class="src-id">getInstance</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a24"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">if&nbsp;</span><span class="src-sym">(</span><span class="src-var">$auth</span><span class="src-sym">-&gt;</span><span class="src-id">hasIdentity</span><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span>&amp;&amp;&nbsp;<span class="src-var">$auth</span><span class="src-sym">-&gt;</span><span class="src-id">getIdentity</span><span class="src-sym">(</span><span class="src-sym">)</span><span class="src-sym">-&gt;</span><span class="src-id">getUid</span><span class="src-sym">(</span><span class="src-sym">)&nbsp;</span>==&nbsp;<span class="src-var">$cruser</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a25"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-str">'&lt;a&nbsp;href=&quot;'&nbsp;</span>.&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#var$view">view</a><span class="src-sym">-&gt;</span><span class="src-id">url</span><span class="src-sym">(</span><span class="src-key">array</span><span class="src-sym">(</span><span class="src-str">'controller'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'entry'</span><span class="src-sym">,&nbsp;</span><span class="src-str">'action'&nbsp;</span>=&gt;&nbsp;<span class="src-str">'delete'</span><span class="src-sym">,</span><span class="src-str">'commentId'&nbsp;</span>=&gt;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#var$view">view</a><span class="src-sym">-&gt;</span><span class="src-id">escape</span><span class="src-sym">(</span><span class="src-var">$commentId</span><span class="src-sym">)))&nbsp;</span>.&nbsp;<span class="src-str">'&quot;&gt;[Eintrag&nbsp;löschen]&lt;/a&gt;'</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a26"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">return&nbsp;</span><span class="src-str">&quot;&quot;</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a27"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a28"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-doc">/**</span></div></li>
+<li><div class="src-line"><a name="a29"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Sets&nbsp;the&nbsp;view&nbsp;field</span></div></li>
+<li><div class="src-line"><a name="a30"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;</span><span class="src-doc-coretag">@param&nbsp;</span><span class="src-doc-type">$view&nbsp;</span><span class="src-doc">Zend_View_Interface</span></div></li>
+<li><div class="src-line"><a name="a31"></a><span class="src-doc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*/</span></div></li>
+<li><div class="src-line"><a name="a32"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-key">public&nbsp;</span><span class="src-key">function&nbsp;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#methodsetView">setView</a>&nbsp;<span class="src-sym">(</span><span class="src-id">Zend_View_Interface&nbsp;</span><span class="src-var">$view</span><span class="src-sym">)</span></div></li>
+<li><div class="src-line"><a name="a33"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">{</span></div></li>
+<li><div class="src-line"><a name="a34"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-var">$this</span><span class="src-sym">-&gt;</span><a href="../Default/viewHelper/Zend_View_Helper_DeleteCommentLink.html#var$view">view</a>&nbsp;=&nbsp;<span class="src-var">$view</span><span class="src-sym">;</span></div></li>
+<li><div class="src-line"><a name="a35"></a>&nbsp;&nbsp;&nbsp;&nbsp;<span class="src-sym">}</span></div></li>
+<li><div class="src-line"><a name="a36"></a><span class="src-sym">}</span></div></li>
+</ol></div>
+</div>
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 06 Jun 2011 18:33:46 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+	</p>
+	</body>
+</html>

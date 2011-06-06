@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Default_Service_Spirit</title>
+			<link rel="stylesheet" href="../../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Default_Service_Spirit</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This is the Spirit REST service.</p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Florian Schuhmann</li>
+				<li><span class="field">usedby:</span> <a href="../../Default/Model/Default_Model_Mapper_EntryRestMapper.html#methodfetchAll">Default_Model_Mapper_EntryRestMapper::fetchAll()</a> - $comment,$comments</li>
+				<li><span class="field">usedby:</span> <a href="../../Default/Model/Default_Model_Mapper_EntryRestMapper.html">Default_Model_Mapper_EntryRestMapper</a></li>
+				<li><span class="field">usedby:</span> <a href="../../Default/Model/Default_Model_Mapper_EntryRestMapper.html#methodfind">Default_Model_Mapper_EntryRestMapper::find()</a> - $comment,$comments</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_application---modules---default---services---Spirit.php.html">/application/modules/default/services/Spirit.php</a> (line <span class="field"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a9">9</a></span>)
+		</p>
+		
+				
+		<pre>Zend_Rest_Client
+   |
+   --Default_Service_Spirit</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																																																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_filterParams" title="details" class="var-name">$_filterParams</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_params" title="details" class="var-name">$_params</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$_responseType" title="details" class="var-name">$_responseType</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$_responseTypes" title="details" class="var-name">$_responseTypes</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$_suffix" title="details" class="var-name">$_suffix</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">string</span>
+					<a href="#$_uri" title="details" class="var-name">$_uri</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																												
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#fetchAllNews" title="details" class="method-name">fetchAllNews</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$filterParams</span> = <span class="var-default">array()</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#findNews" title="details" class="method-name">findNews</a>
+											(<span class="var-type">int</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">stdClass</span>
+										<a href="#formatResponse" title="details" class="method-name">formatResponse</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getFilterParams" title="details" class="method-name">getFilterParams</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getParams" title="details" class="method-name">getParams</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getResponseType" title="details" class="method-name">getResponseType</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#sendRequest" title="details" class="method-name">sendRequest</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestType</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setFilterParams" title="details" class="method-name">setFilterParams</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setParams" title="details" class="method-name">setParams</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setResponseType" title="details" class="method-name">setResponseType</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseType</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$_filterParams" id="$_filterParams"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_filterParams</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a31">31</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_params" id="$_params"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_params</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a27">27</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_responseType" id="$_responseType"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$_responseType</span>
+			 = <span class="var-default"> 'json'</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a35">35</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_responseTypes" id="$_responseTypes"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$_responseTypes</span>
+			 = <span class="var-default">array('xml', 'json')</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a39">39</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_suffix" id="$_suffix"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$_suffix</span>
+			 = <span class="var-default"> '/fhs-spirit'</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a18">18</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> suffix of the URL</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$_uri" id="$_uri"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">string</span>
+			<span class="var-name">$_uri</span>
+			 = <span class="var-default"> 'https://212.201.64.226:8443/'</span>			(line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a14">14</a></span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> URL of the REST service</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a44">44</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			__construct
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfetchAllNews" id="fetchAllNews"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">fetchAllNews</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a165">165</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">fetchs all news with comments</p>
+<p class="description"><p>which passes the filter criteria</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			fetchAllNews
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$filterParams</span> = <span class="var-default">array()</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$filterParams</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodfindNews" id="findNews"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">findNews</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a179">179</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">find one news with comments</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			findNews
+		</span>
+					(<span class="var-type">int</span>&nbsp;<span class="var-name">$id</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$params</span> = <span class="var-default">array()</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">int</span>
+				<span class="var-name">$id</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodformatResponse" id="formatResponse"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">formatResponse</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a149">149</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+				<li><span class="field">uses:</span> Zend_Rest_Client_Result</li>
+				<li><span class="field">uses:</span> Zend_Json_Decoder</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">stdClass</span>
+		<span class="method-name">
+			formatResponse
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$response</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">Zend_Http_Response</span>
+				<span class="var-name">$response</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetFilterParams" id="getFilterParams"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getFilterParams</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a94">94</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getFilterParams
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetParams" id="getParams"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getParams</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a77">77</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getParams
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetResponseType" id="getResponseType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getResponseType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a116">116</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getResponseType
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsendRequest" id="sendRequest"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">sendRequest</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a126">126</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">throws:</span> Default_Service_Spirit_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sendRequest
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestType</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$path</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$requestType</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetFilterParams" id="setFilterParams"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setFilterParams</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a85">85</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setFilterParams
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetParams" id="setParams"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setParams</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a57">57</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setParams
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$params</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$params</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetResponseType" id="setResponseType"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setResponseType</span> (line <span class="line-number"><a href="../../__filesource/fsource_Default_Service_applicationmodulesdefaultservicesSpirit.php.html#a103">103</a></span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">throws:</span> Default_Service_Spirit_Exception</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setResponseType
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$responseType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$responseType</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Mon, 06 Jun 2011 18:33:50 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.1</a>
+	</p>
+	</div></body>
+</html>
